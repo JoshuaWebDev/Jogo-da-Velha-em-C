@@ -4,11 +4,11 @@
 
 Josué Barros da Silva (Joshua)
 
-Em 21/09/2019
+Desenvolvido em 21/09/2019
 
 GitHub: JoshuaWebDev
 
-site: http://www.joshuawebdev.wordpress.com
+Site: http://www.joshuawebdev.wordpress.com
 
 ## Propósito
 
