@@ -22,26 +22,30 @@ void inicializar(int matriz[][TAMANHO], int tam)
             matriz[i][j] = 0;
 }
 
-void mostrar(int matriz[][TAMANHO], int tam)
+void mostrarTabuleiro(int matriz[][TAMANHO], int tam)
 {
     int i, j;
-    printf("\n::: JOGO DA VELHA 1.0 :::\n");
-    printf(" _ _ _ \n");
+    char c[3];
+
+    printf("\n::: JOGO DA VELHA 1.1 :::\n\n");
+
     for(i = 0; i < tam; i++)
     {
         for(j = 0; j < tam; j++)
         {
             if(matriz[i][j] == 0) {
-                printf("|_");
+                c[j] = ' ';
             } else {
                 if(matriz[i][j] == 1) {
-                    printf("|X");
+                    c[j] = 'X';
                 } else {
-                    printf("|O");
+                    c[j] = 'O';
                 }
             }
         }
-        printf("|\n");
+        printf(" %c | %c | %c ", c[0], c[1], c[2]);
+        if( i != 2 )
+            printf("\n---|---|---\n");
     }
     printf("\n");
 }
@@ -80,7 +84,7 @@ int main()
 
     // exibe a matriz, neste momento ela ainda não foi
     // preenchida por nenhum jogador, ou seja, esta zerada
-    mostrar(tabuleiro, TAMANHO);
+    mostrarTabuleiro(tabuleiro, TAMANHO);
 
     do {
         printf("Escolha uma posição na matriz 3x3\n");
@@ -95,7 +99,7 @@ int main()
             tabuleiro[linha-1][coluna-1] = vez(jogadas);
 
             // exibe a matriz
-            mostrar(tabuleiro, TAMANHO);
+            mostrarTabuleiro(tabuleiro, TAMANHO);
 
             if( diagonalPrincipal(tabuleiro, TAMANHO) == 1 )
             {
@@ -115,7 +119,7 @@ int main()
         } else {
             printf("\nA posição %d,%d já foi preenchida!", linha, coluna);
             printf("\nEscolha outra posição!\n");
-            mostrar(tabuleiro, TAMANHO);
+            mostrarTabuleiro(tabuleiro, TAMANHO);
         }
   
     } while ( jogadas != 9 );
