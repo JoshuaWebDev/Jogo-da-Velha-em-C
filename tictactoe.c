@@ -14,16 +14,6 @@ int vez(int num)
         return -1;
 }
 
-void limparTela()
-{
-    int count = 0;
-    while( count != 50 )
-    {
-        putchar('\n');
-        count++;
-    }
-}
-
 void inicializar(int matriz[][TAMANHO], int tam)
 {
     int i, j;
@@ -88,8 +78,6 @@ int main()
     // inicializa a matriz com zeros
     inicializar(tabuleiro, TAMANHO);
 
-    limparTela();
-
     // exibe a matriz, neste momento ela ainda não foi
     // preenchida por nenhum jogador, ou seja, esta zerada
     mostrar(tabuleiro, TAMANHO);
@@ -105,8 +93,6 @@ int main()
         {
             // alterna entre os jogadores (1 e -1)
             tabuleiro[linha-1][coluna-1] = vez(jogadas);
-
-            limparTela();
 
             // exibe a matriz
             mostrar(tabuleiro, TAMANHO);
@@ -127,7 +113,6 @@ int main()
             jogadas++;
 
         } else {
-            limparTela();
             printf("\nA posição %d,%d já foi preenchida!", linha, coluna);
             printf("\nEscolha outra posição!\n");
             mostrar(tabuleiro, TAMANHO);
