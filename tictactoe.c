@@ -27,7 +27,7 @@ void mostrarTabuleiro(int matriz[][TAMANHO], int tam)
     int i, j;
     char c[3];
 
-    printf("\n::: JOGO DA VELHA 1.1 :::\n\n");
+    printf("\n::: JOGO DA VELHA 1.2 :::\n\n");
 
     for(i = 0; i < tam; i++)
     {
@@ -43,11 +43,11 @@ void mostrarTabuleiro(int matriz[][TAMANHO], int tam)
                 }
             }
         }
-        printf(" %c | %c | %c ", c[0], c[1], c[2]);
+        printf("\t %c | %c | %c ", c[0], c[1], c[2]);
         if( i != 2 )
-            printf("\n---|---|---\n");
+            printf("\n\t---|---|---\n");
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 int diagonalPrincipal(int matriz[][TAMANHO], int tam)
@@ -58,6 +58,29 @@ int diagonalPrincipal(int matriz[][TAMANHO], int tam)
         for( j = 0; j < tam; j++)
         {
             if ( i == j )
+            {
+                if ( matriz[i][j] == 1 )
+                    somaX++;
+                if ( matriz[i][j] == -1 )
+                    somaO += -1;
+            }
+        }
+        if (somaX == 3)
+            return 1;
+        if (somaO == -3)
+            return -1;
+    }
+    return 0;
+}
+
+int diagonalSecundaria(int matriz[][TAMANHO], int tam)
+{
+    int i, j, somaX = 0, somaO = 0;
+    for( i = 0; i < tam; i++ )
+    {
+        for( j = 0; j < tam; j++)
+        {
+            if ( i + j == 2 )
             {
                 if ( matriz[i][j] == 1 )
                     somaX++;
@@ -105,14 +128,17 @@ int main()
             {
                 printf("\nO jogador X ganhou!\n");
                 break;
-            }
-            
-            if( diagonalPrincipal(tabuleiro, TAMANHO) == -1 )
-            {
+            } else if( diagonalPrincipal(tabuleiro, TAMANHO) == -1 ) {
+                printf("\nO jogador O ganhou!\n");
+                break;
+            } else if(diagonalSecundaria(tabuleiro, TAMANHO) == 1) {
+                printf("\nO jogador X ganhou!\n");
+                break;
+            } else if(diagonalSecundaria(tabuleiro, TAMANHO) == -1) {
                 printf("\nO jogador O ganhou!\n");
                 break;
             }
-
+ 
             // contabiliza a quantidade de jogadas válidas
             jogadas++;
 
