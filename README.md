@@ -15,4 +15,4 @@ Site: http://www.joshuawebdev.wordpress.com
 Aprendizado e diversão.
 
 Um simples jogo da velha que roda no terminal.
-É escrito na linguagem e usa vetores para criar a estrutura do jogo.
+É escrito na linguagem C e usa vetores para criar a estrutura do jogo.
